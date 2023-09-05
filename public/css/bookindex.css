@@ -1,0 +1,112 @@
+#sideboard {
+    width: 15%;
+    float: left;
+}
+/* table関連 */
+table {
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+    width: 80%;
+}
+
+table tr {
+    border-bottom: solid 2px white;
+    cursor: pointer;
+}
+
+table th {
+    background-color: rgb(245, 237, 224);
+}
+
+table tr:hover {
+    background-color: #d4f0fd;
+}
+
+table th,
+table td {
+    text-align: left;
+    /* width: 25%; */
+    padding: 15px 0;
+}
+/* 奇数行 */
+table tr:nth-child(2n + 1) {
+    background-color: #f4eaf4;
+}
+/* 偶数行 */
+table tr:nth-child(2n) {
+    background-color: #c7e0e9;
+}
+
+table tr td[class="book-image"] {
+    width: 5%;
+    padding: auto;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* background-color: aqua; */
+}
+
+table tr td[class="title"]
+ {
+    font-size: 25px;
+    width: 30%;
+    text-align: center;
+    /* background-color: rgb(116, 53, 139); */
+}
+
+table tr th[id="title-head"] {
+    width: 30%;
+    text-align: center;
+}
+
+table tr td[class="author"],
+[id="author-head"] {
+    width: 30%;
+    text-align: center;
+    /* background-color: rgb(139, 32, 77); */
+}
+
+table tr td[class="ymd"],
+th[id="ymd-head"] {
+    width: 16%;
+    text-align: center;
+
+    /* background-color: rgb(90, 175, 64); */
+}
+table tr td[class="del-button"] {
+    background-color: none;
+    width: 7%;
+    /* background-color: rgb(143, 192, 69); */
+    text-align: center;
+
+    padding: auto;
+    text-align: center;
+}
+
+svg[class="bi bi-trash3"] {
+    vertical-align: middle;
+}
+
+table tr td[class="ref-button"] {
+    background-color: none;
+    width: 7%;
+    /* background-color: rgb(212, 226, 226); */
+    text-align: center;
+
+    padding: auto;
+    text-align: center;
+}
+
+/* フォント名参考に */
+
+/* table th {
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-family: 'Reggae One', cursive;
+  color: black;
+}
+
+.title-val,.author-val {
+  font-family: 'Mochiy Pop P One', sans-serif;
+font-family: 'Reggae One', cursive;
+color: yellow;
+} */
