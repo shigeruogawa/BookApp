@@ -46,6 +46,19 @@ class RestappController extends Controller
      */
     public function store(BookFormRequest $request)
     {
+
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalName();
+        $image->storeAs('public/image', $imageName);
+
+        $newbook = new Restdata;
+        $form = $request->all();
+
+        $form['image_file'] = 'image/' . $imageName;
+        unset($form['_token']);
+
+        $newbook->fill($form)->save();
+
         return redirect('/MyBook');
     }
 
@@ -104,6 +117,11 @@ class RestappController extends Controller
         $target = Restdata::find($id);
         $target->delete();
         return redirect('/MyBook');
+    }
+
+    public function toMypage()
+    {
+        return view('details.mypage');
     }
 
     public function ses_get(Request $request)

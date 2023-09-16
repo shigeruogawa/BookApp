@@ -23,6 +23,7 @@ Route::get('/MyBook/{id}/edit', 'App\Http\Controllers\RestappController@edit')->
 Route::post('/MyBook/insert', 'App\Http\Controllers\RestappController@store')->middleware('auth');
 Route::post('/MyBook/{id}', 'App\Http\Controllers\RestappController@update')->middleware('auth');
 Route::delete('/MyBook/{id}', 'App\Http\Controllers\RestappController@destroy')->middleware('auth');
+Route::get('/MyBook/my/page', 'App\Http\Controllers\RestappController@toMypage')->middleware('auth');
 
 Auth::routes();
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
