@@ -6,10 +6,10 @@
     <link href="{{ asset('/css/showbook.css') }}" rel="stylesheet">
 @endsection
 
-@section('title', $showitems->name)
+@section('title', $showitems->title)
 
 @section('book-title')
-    <h2 id="title">{{ $showitems->name }}</h2>
+    <h2 id="title">{{ $showitems->title }}</h2>
 @endsection
 
 @section('synopsis')

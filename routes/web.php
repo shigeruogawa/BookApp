@@ -16,20 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/MyBook', 'App\Http\Controllers\RestappController@index')->middleware('auth');
-Route::get('/MyBook/toInsert', 'App\Http\Controllers\RestappController@toInsert')->middleware('auth');
-Route::get('/MyBook/{id}', 'App\Http\Controllers\RestappController@show')->middleware('auth');
-Route::get('/MyBook/{id}/edit', 'App\Http\Controllers\RestappController@edit')->middleware('auth');
-Route::post('/MyBook/insert', 'App\Http\Controllers\RestappController@store')->middleware('auth');
-Route::post('/MyBook/{id}', 'App\Http\Controllers\RestappController@update')->middleware('auth');
-Route::delete('/MyBook/{id}', 'App\Http\Controllers\RestappController@destroy')->middleware('auth');
-Route::get('/MyBook/my/page', 'App\Http\Controllers\RestappController@toMypage')->middleware('auth');
+Route::get('/MyBook', 'App\Http\Controllers\BookController@index')->middleware('auth');
+Route::get('/MyBook/toInsert', 'App\Http\Controllers\BookController@toInsert')->middleware('auth');
+Route::get('/MyBook/{id}', 'App\Http\Controllers\BookController@show')->middleware('auth');
+Route::get('/MyBook/{id}/edit', 'App\Http\Controllers\BookController@edit')->middleware('auth');
+Route::post('/MyBook/insert', 'App\Http\Controllers\BookController@store')->middleware('auth');
+Route::post('/MyBook/{id}', 'App\Http\Controllers\BookController@update')->middleware('auth');
+Route::delete('/MyBook/{id}', 'App\Http\Controllers\BookController@destroy')->middleware('auth');
+Route::get('/MyBook/my/page', 'App\Http\Controllers\BookController@toMypage')->middleware('auth');
 
 Auth::routes();
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 
-/*Route::get('/', 'App\Http\Controllers\RestappController@index');*/
+/*Route::get('/', 'App\Http\Controllers\BookController@index');*/
 
 // Route::resource('/MyBook','App\Http\Controllers\RestappController');
 
@@ -42,7 +42,7 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 // Route::post('/home', 'App\Http\Controllers\HomeController@updtinfo');
 
-// Route::get('/Mybook/session','App\Http\Controllers\RestappController@ses_get');
-// Route::post('/Mybook/session','App\Http\Controllers\RestappController@ses_put');
+// Route::get('/Mybook/session','App\Http\Controllers\BookController@ses_get');
+// Route::post('/Mybook/session','App\Http\Controllers\BookController@ses_put');
 // Route::resource('/MyBook', 'App\Http\Controllers\RestappController')
 //     ->middleware('auth');

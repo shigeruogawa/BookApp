@@ -28,7 +28,7 @@ class BookFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'title' => 'required',
             'author' => 'required',
             'synopsis' => 'between:0,200',
             'impressions' => 'between:0,200',

@@ -65,7 +65,7 @@
         @foreach ($items as $val)
             <tr>
                 <td class="book-image" style="background-image : url({{ asset('/storage/' . $val->image_file) }})">
-                <td id="title-val" class="title">{{ $val->name }}</td>
+                <td id="title-val" class="title">{{ $val->title }}</td>
                 <td id="author-val" class="author">{{ $val->author }}</td>
                 <td id="ymd-val" class="ymd">{{ date('Y-m-d', strtotime($val->updated_at)) }}</td>
                 <td class="ref-button"><a href="/MyBook/{{ $val->id }}"><svg xmlns="http://www.w3.org/2000/svg"
