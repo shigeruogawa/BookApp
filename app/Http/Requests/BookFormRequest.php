@@ -13,7 +13,7 @@ class BookFormRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == 'MyBook/insert') {
+        if ($this->path() == 'MyBook/book/insert') {
             return true;
         } else {
             return false;
@@ -39,7 +39,7 @@ class BookFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'タイトルを入力してください。',
+            'title.required' => 'タイトルを入力してください。',
             'author.required' => '著者名を入力してください。',
             'synopsis.between' => 'あらすじは0~200文字で入力してください。',
             'impressions.between' => '感想は0~200文字で入力してください。',

@@ -12,12 +12,7 @@ class BookController extends Controller
 {
     public function index()
     {
-        // $items = Restdata::all();
         $items = DB::table('books')->simplePaginate((10));
-
-
-
-
         $user = Auth::user();
 
         return view('bookindex', ['items' => $items, 'user' => $user]);
@@ -41,20 +36,20 @@ class BookController extends Controller
      */
     public function store(BookFormRequest $request)
     {
-
-        $image = $request->file('image');
-        $imageName = time() . '.' . $image->getClientOriginalName();
-        $image->storeAs('public/image', $imageName);
-
         $newbook = new Book;
+        
         $form = $request->all();
-
-        $form['image_file'] = 'image/' . $imageName;
         unset($form['_token']);
+        
+        if(isset($form['image'])) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalName();
+            $image->storeAs('public/image', $imageName);
+            $form['image_file'] = 'image/' . $imageName;
+        }
 
         $newbook->fill($form)->save();
-
-        return redirect('/MyBook');
+        return redirect('/MyBook/book');
     }
 
     /**
@@ -97,8 +92,10 @@ class BookController extends Controller
         $target = Book::find($id);
         $form = $request->all();
         unset($form['_token']);
+
         $target->fill($form)->save();
-        return redirect('/MyBook');
+
+        return redirect('/MyBook/book');
     }
 
     /**
@@ -111,17 +108,22 @@ class BookController extends Controller
     {
         $target = Book::find($id);
         $target->delete();
-        return redirect('/MyBook');
+
+        return redirect('/MyBook/book');
     }
 
     public function toMypage()
     {
-        return view('details.mypage');
+
+        $user = Auth::user();
+
+        return view('details.mypage', ['user' => $user]);
     }
 
     public function ses_get(Request $request)
     {
         $sesdata = $request->session()->get('msg');
+
         return view('session', ['session_data' => $sesdata]);
     }
 
@@ -129,6 +131,7 @@ class BookController extends Controller
     {
         $msg = $request->input;
         $request->session()->put('msg', $msg);
+
         return redirect('MyBook/session');
     }
 }

@@ -1,6 +1,5 @@
 @extends('layout.default')
 
-
 @section('menuber')
 	@parent
 	session

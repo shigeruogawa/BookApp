@@ -15,6 +15,7 @@ table tr {
 }
 
 table th {
+    font-size:27px;
     background-color: rgb(245, 237, 224);
 }
 
@@ -25,7 +26,6 @@ table tr:hover {
 table th,
 table td {
     text-align: left;
-    /* width: 25%; */
     padding: 15px 0;
 }
 /* 奇数行 */
@@ -43,15 +43,12 @@ table tr td[class="book-image"] {
     text-align: center;
     background-repeat: no-repeat;
     background-size: contain;
-    /* background-color: aqua; */
 }
 
-table tr td[class="title"]
- {
+table tr td[class="title"] {
     font-size: 25px;
     width: 30%;
     text-align: center;
-    /* background-color: rgb(116, 53, 139); */
 }
 
 table tr th[id="title-head"] {
@@ -63,50 +60,27 @@ table tr td[class="author"],
 [id="author-head"] {
     width: 30%;
     text-align: center;
-    /* background-color: rgb(139, 32, 77); */
 }
 
 table tr td[class="ymd"],
 th[id="ymd-head"] {
     width: 16%;
     text-align: center;
-
-    /* background-color: rgb(90, 175, 64); */
 }
 table tr td[class="del-button"] {
     background-color: none;
     width: 7%;
-    /* background-color: rgb(143, 192, 69); */
     text-align: center;
-
     padding: auto;
     text-align: center;
-}
-
-svg[class="bi bi-trash3"] {
-    vertical-align: middle;
+    color:black;
 }
 
 table tr td[class="ref-button"] {
     background-color: none;
     width: 7%;
-    /* background-color: rgb(212, 226, 226); */
     text-align: center;
-
     padding: auto;
     text-align: center;
+    color:black;
 }
-
-/* フォント名参考に */
-
-/* table th {
-  font-family: 'Mochiy Pop P One', sans-serif;
-  font-family: 'Reggae One', cursive;
-  color: black;
-}
-
-.title-val,.author-val {
-  font-family: 'Mochiy Pop P One', sans-serif;
-font-family: 'Reggae One', cursive;
-color: yellow;
-} */

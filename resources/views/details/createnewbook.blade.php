@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>新しい本</title>
+@extends('layouts.default')
+
+@section('title', '新しい本')
+
+@section('css-link')
 	<link href="{{ asset('/css/createnewbook.css') }}" rel="stylesheet">
-</head>
-<body>
-<form action = "/MyBook/insert" method = "post" enctype="multipart/form-data">
+@endsection
+
+@section('side-bar-content')
+<form action = "/MyBook/book/insert" method = "post" enctype="multipart/form-data">
+	@csrf
 	  <table>
-		@csrf
 			<tr><th>タイトル</th><td><input type = "text" name = "title" value ="{{old('title')}}"></td></tr>
 			@error('title')
 			<p class = "err">{{$message}}</p>
@@ -28,7 +28,7 @@
 			@error('impressions')
 			<p class = "err">{{$message}}</p>
 			@enderror
-			<tr><th>表紙</th><input  type="file" name="image"><tr>
+			<tr><th>表紙</th><input type="file" name="image"><tr>
 
 			@error('image')
 			<p class = "err">{{$message}}</p>
@@ -36,5 +36,4 @@
 			<tr><th></th><td><input type = "submit" value="CREATE"> </td></tr>
 	</table>
 </form>
-</body>
-</html>
+@endsection
