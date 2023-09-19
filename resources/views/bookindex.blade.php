@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <link href="{{ asset('/css/bookindex.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -56,13 +57,14 @@
                 <td id="title-val" class="title">{{ $val->title }}</td>
                 <td id="author-val" class="author">{{ $val->author }}</td>
                 <td id="ymd-val" class="ymd">{{ date('Y-m-d', strtotime($val->updated_at)) }}</td>
-                <td class="ref-button"><a href="/MyBook/book/{{ $val->id }}"><i class="bi bi-book"></i></a></td>
+                <td class="ref-button"><a href="/MyBook/book/{{ $val->id }}"><i class="bi bi-book"
+                            style="color: black;"></i></a></td>
                 <td class="del-button">
                     <form method="post" action="/MyBook/book/{{ $val->id }}/">
                         @method('DELETE')
                         @csrf
                         <button onclick="return confirm('削除してよろしいでしょうか？')">
-                        <i class="bi bi-trash3-fill" style="{font-color:black;}"></i>
+                            <i class="bi bi-trash3-fill" style="{font-color:black;}"></i>
                         </button>
                     </form>
                 </td>
@@ -70,9 +72,11 @@
         @endforeach
     </table>
     {{ $items->links() }}
-    <button type="button" class="btn btn-light" style="margin-top: 25px;"><a href="/MyBook/book/toInsert"><i class="bi bi-plus"></i>NEW
+    <button type="button" class="btn btn-light" style="color: black;margin-top: 25px;"><a
+            href="/MyBook/book/toInsert"><i class="bi bi-plus"></i>NEW
             BOOK</a></button>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/bookindex.js') }}"></script>
 </body>
+
 </html>

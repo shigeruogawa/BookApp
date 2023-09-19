@@ -37,10 +37,10 @@ class BookController extends Controller
     public function store(BookFormRequest $request)
     {
         $newbook = new Book;
-        
+
         $form = $request->all();
         unset($form['_token']);
-        
+
         if(isset($form['image'])) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalName();
@@ -114,7 +114,6 @@ class BookController extends Controller
 
     public function toMypage()
     {
-
         $user = Auth::user();
 
         return view('details.mypage', ['user' => $user]);

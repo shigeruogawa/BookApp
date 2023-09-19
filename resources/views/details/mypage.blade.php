@@ -7,6 +7,7 @@
 @endsection
 
 @section('side-bar-content')
+    <div id="book-image" style="background-image : url({{ asset('/storage/' . $showitems->image_file) }})"></div>
 
 
 @endsection

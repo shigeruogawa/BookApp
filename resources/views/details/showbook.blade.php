@@ -7,7 +7,7 @@
 @endsection
 
 @section('side-bar-content')
-<div id="book-image" style="background-image : url({{ asset('/storage/' . $showitems->image_file) }})"></div>
+    <div id="book-image" style="background-image : url({{ asset('/storage/' . $showitems->image_file) }})"></div>
 @endsection
 
 @section('main-content')
@@ -19,7 +19,8 @@
     <p>感想</p>
     <p id="impressions-area">{{ $showitems->impressions }}</p>
 
-    <button type="button"  class="btn btn-light"><a href="/MyBook/book/{{ $showitems->id }}/edit"><i class="bi bi-pen"></i></a></button>
+    <button type="button" class="btn btn-light"><a href="/MyBook/book/{{ $showitems->id }}/edit"><i class="bi bi-pen"
+                style="color:black;"></i></a></button>
 @endsection
 
 @section('js-link')
