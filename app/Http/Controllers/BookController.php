@@ -41,7 +41,7 @@ class BookController extends Controller
         $form = $request->all();
         unset($form['_token']);
 
-        if(isset($form['image'])) {
+        if (isset($form['image'])) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalName();
             $image->storeAs('public/image', $imageName);
@@ -110,13 +110,6 @@ class BookController extends Controller
         $target->delete();
 
         return redirect('/MyBook/book');
-    }
-
-    public function toMypage()
-    {
-        $user = Auth::user();
-
-        return view('details.mypage', ['user' => $user]);
     }
 
     public function ses_get(Request $request)

@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
 
 class RegisterController extends Controller
 {
@@ -53,7 +57,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'image' => 'mimetypes:image/jpeg,image/png'
+            'image_file' => 'mimetypes:image/jpeg,image/png'
         ]);
     }
 
@@ -72,4 +76,34 @@ class RegisterController extends Controller
             'image_file' => $data['image_file']
         ]);
     }
+
+    public function register(Request $request)
+    {
+        $form = $request->all();
+
+        if (isset($form['image_file'])) {
+            $image = $request->file('image_file');
+            $imageName = time() . '.' . $image->getClientOriginalName();
+            $image->storeAs('public/image/user', $imageName);
+            $form['image_file'] = 'image/user/' . $imageName;
+        }
+
+        $this->validator($request->all())->validate();
+
+        var_dump($form);
+
+        event(new Registered($user = $this->create($form)));
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 201)
+            : redirect($this->redirectPath());
+    }
+
+
 }

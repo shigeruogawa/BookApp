@@ -1,0 +1,14 @@
+#image {
+    width: auto;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bi-person-square {
+    font-size: 30px;
+}
+
+#name {
+    font-size: 25px;
+}

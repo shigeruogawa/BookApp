@@ -1,12 +1,23 @@
-@extends('layouts.default')
+<html>
 
-@section('title', '一覧')
-
-@section('css-link')
+<head>
     <link href="{{ asset('/css/bookindex.css') }}" rel="stylesheet">
-@endsection
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <title>
+        このミステリがすごい
+    </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Water+Brush&family=Yuji+Mai&display=swap');
+    </style>
+</head>
+<header>
+    <h1>THE BEST MISTERIES</h1>
+</header>
 
-@section('side-bar-content')
+<body>
+
+
     <div>
         <p>{{ $user->name . 'さんこんにちは' }}</p>
         <form action="/logout" method="POST">
@@ -24,9 +35,8 @@
         </ul>
         <p id="self-intro"></p>
     </div>
-@endsection
+    </div>
 
-@section('main-content')
     <table>
         <th id="cover-head"></th>
         <th id="title-head" class="title"><i class="bi bi-flag"></i>
@@ -61,16 +71,12 @@
             </tr>
         @endforeach
     </table>
-
-    <button type="button" class="btn btn-light" style="color: black;margin-top: 25px;">
-        <a href="/MyBook/book/toInsert">
-            <i class="bi bi-plus"></i>
-            NEW BOOK
-        </a>
-    </button>
-@endsection
-
-@section('js-link')
+    {{ $items->links() }}
+    <button type="button" class="btn btn-light" style="color: black;margin-top: 25px;"><a
+            href="/MyBook/book/toInsert"><i class="bi bi-plus"></i>NEW
+            BOOK</a></button>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/bookindex.js') }}"></script>
-@endsection
+</body>
+
+</html>

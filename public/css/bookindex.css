@@ -1,12 +1,12 @@
 #sideboard {
-    width: 15%;
+    width: auto;
     float: left;
 }
 /* table関連 */
 table {
     /* border-collapse: collapse; */
     border-spacing: 0;
-    width: 80%;
+    width: 90%;
 }
 
 table tr {
@@ -15,7 +15,7 @@ table tr {
 }
 
 table th {
-    font-size:27px;
+    font-size: 27px;
     background-color: rgb(245, 237, 224);
 }
 
@@ -73,7 +73,7 @@ table tr td[class="del-button"] {
     text-align: center;
     padding: auto;
     text-align: center;
-    color:black;
+    color: black;
 }
 
 table tr td[class="ref-button"] {
@@ -82,5 +82,10 @@ table tr td[class="ref-button"] {
     text-align: center;
     padding: auto;
     text-align: center;
-    color:black;
+    color: black;
+}
+
+#delete-form {
+    margin-top: auto;
+    margin-bottom: auto;
 }

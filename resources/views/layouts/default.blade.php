@@ -18,7 +18,7 @@
             </div>
             <div id="to-mypage" class="col-10">
                 <a href="/MyBook/mypage/1" id="mypage-link">
-                    <i class="bi bi-house-door" style="font-size: 120px"></i>
+                    <i class="bi bi-house-door"></i>
                 </a>
             </div>
         </div>
@@ -26,7 +26,7 @@
 
     <div class="row">
         <div id="side-bar" class="col-3">
-                @yield('side-bar-content')
+            @yield('side-bar-content')
         </div>
 
         <div id="main-content" class="col-9">
