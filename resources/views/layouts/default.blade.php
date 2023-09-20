@@ -17,7 +17,7 @@
                 </a>
             </div>
             <div id="to-mypage" class="col-10">
-                <a href="/MyBook/mypage/1" id="mypage-link">
+                <a href="/MyBook/mypage/{{ Auth::User()->id }}" id="mypage-link">
                     <i class="bi bi-house-door"></i>
                 </a>
             </div>

@@ -24,4 +24,7 @@ Route::post('/MyBook/book/{id}', 'App\Http\Controllers\BookController@update')->
 Route::get('/MyBook/book/toInsert', 'App\Http\Controllers\BookController@toInsert')->middleware('auth');
 Route::post('/MyBook/book/insert', 'App\Http\Controllers\BookController@store')->middleware('auth');
 Route::delete('/MyBook/book/{id}', 'App\Http\Controllers\BookController@destroy')->where('id', '[0-9]+')->middleware('auth');
-Route::get('/MyBook/mypage/{id}', 'App\Http\Controllers\BookController@toMypage')->where('id', '[0-9]+')->middleware('auth');
+
+Route::get('/MyBook/mypage/{id}', 'App\Http\Controllers\UserController@toMypage')->where('id', '[0-9]+')->middleware('auth');
+Route::get('/MyBook/mypage/{id}/edit', 'App\Http\Controllers\UserController@toRegisterProfile')->where('id', '[0-9]+')->middleware('auth');
+Route::post('/MyBook/mypage/profile/update', 'App\Http\Controllers\UserController@updateProfile')->middleware('auth');

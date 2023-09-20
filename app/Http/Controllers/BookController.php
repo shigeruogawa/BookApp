@@ -15,7 +15,7 @@ class BookController extends Controller
         $items = DB::table('books')->simplePaginate((10));
         $user = Auth::user();
 
-        return view('bookindex', ['items' => $items, 'user' => $user]);
+        return view('book.bookindex', ['items' => $items, 'user' => $user]);
     }
 
     /**
@@ -25,7 +25,7 @@ class BookController extends Controller
      */
     public function toInsert()
     {
-        return view('details.createnewbook');
+        return view('book.createnewbook');
     }
 
     /**
@@ -63,7 +63,7 @@ class BookController extends Controller
         $bookid = $id;
         $showitems = Book::where('id', $bookid)->first();
 
-        return view('details.showbook', ['showitems' => $showitems]);
+        return view('book.showbook', ['showitems' => $showitems]);
     }
 
     /**
@@ -77,7 +77,7 @@ class BookController extends Controller
         $bookid = $id;
         $edititems = Book::where('id', $bookid)->first();
 
-        return view('details.editbook', ['edititems' => $edititems]);
+        return view('book.editbook', ['edititems' => $edititems]);
     }
 
     /**
