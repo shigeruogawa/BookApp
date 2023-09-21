@@ -47,7 +47,7 @@ table tr td[class="book-image"] {
 
 table tr td[class="title"] {
     font-size: 25px;
-    font-family: "Gautami";
+    font-weight: bold;
     width: 30%;
     text-align: center;
 }
@@ -89,4 +89,15 @@ table tr td[class="ref-button"] {
 #delete-form {
     margin-top: auto;
     margin-bottom: auto;
+}
+
+#paginate-link {
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bi-search {
+    color: black;
+    font-size: 30px;
 }

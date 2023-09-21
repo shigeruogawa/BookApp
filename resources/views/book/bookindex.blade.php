@@ -47,8 +47,7 @@
                 <td id="title-val" class="title">{{ $val->title }}</td>
                 <td id="author-val" class="author">{{ $val->author }}</td>
                 <td id="ymd-val" class="ymd">{{ date('Y-m-d', strtotime($val->updated_at)) }}</td>
-                <td class="ref-button"><a href="/MyBook/book/{{ $val->id }}"><i class="bi bi-book"
-                            style="color: black;"></i></a></td>
+                <td class="ref-button"><a href="/MyBook/book/{{ $val->id }}"><i class="bi bi-search"></i></a></td>
                 <td class="del-button">
                     <form method="post" action="/MyBook/book/{{ $val->id }}/" id="delete-form">
                         @method('DELETE')
@@ -61,16 +60,16 @@
             </tr>
         @endforeach
     </table>
+    <div id="paginate-link">{{ $items->links() }}<div>
+            <button type="button" class="btn btn-light" style="color: black;margin-top: 25px;">
+                <a href="/MyBook/book/toInsert">
+                    <i class="bi bi-plus"></i>
+                    NEW BOOK
+                </a>
+            </button>
+        @endsection
 
-    <button type="button" class="btn btn-light" style="color: black;margin-top: 25px;">
-        <a href="/MyBook/book/toInsert">
-            <i class="bi bi-plus"></i>
-            NEW BOOK
-        </a>
-    </button>
-@endsection
-
-@section('js-link')
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/bookindex.js') }}"></script>
-@endsection
+        @section('js-link')
+            <script src="{{ asset('js/app.js') }}"></script>
+            <script src="{{ asset('js/bookindex.js') }}"></script>
+        @endsection
