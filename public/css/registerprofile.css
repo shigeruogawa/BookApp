@@ -21,11 +21,13 @@
     display: none;
 }
 
-#image-upload-form-link {
-    background-color: rgb(216, 203, 180);
-    height: auto;
-    width: auto;
-    padding: auto;
-    border-radius: 10px;
+#image-upload-form-button {
+    width: 250px;
+    background-color: rgb(237, 239, 200);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: double 1px black;
+    border-radius: 8px;
     margin-top: 20px;
 }

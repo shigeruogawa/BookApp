@@ -3,6 +3,10 @@
     text-decoration: underline solid black;
 }
 
+#book-image {
+    background-size: contain;
+}
+
 #synopsis,
 #impressions {
     /* font-family: 'Zen Kurenaido', sans-serif; */

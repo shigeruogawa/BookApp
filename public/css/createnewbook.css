@@ -2,6 +2,36 @@
     color: red;
 }
 
-#image-form {
+.bi-plus-lg {
+    color: black;
+    font-size: 30px;
+}
+
+.bi-book {
+    font-size: 250px;
+    margin: auto;
+}
+
+#image-upload {
+    width: 100%;
+    height: 400px;
+    background-color: rgb(234, 226, 226);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#image-upload-form {
     display: none;
+}
+
+#image-upload-form-button {
+    width: 250px;
+    background-color: rgb(237, 239, 200);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: double 1px black;
+    border-radius: 8px;
+    margin-top: 20px;
 }

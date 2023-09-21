@@ -6,53 +6,46 @@
     <link href="{{ asset('/css/createnewbook.css') }}" rel="stylesheet">
 @endsection
 
-@section('side-bar-content')
-    <form action="/MyBook/book/insert" method="POST" enctype="multipart/form-data">
+<form action="/MyBook/book/insert" method="POST" enctype="multipart/form-data">
+    @section('side-bar-content')
+        <div id="image-upload">
+            <i class="bi bi-book" id="image-logo"></i>
+            <img id="image-area" alt="No image" style="display: none;">
+        </div>
+
+        <input type="file" id="image-upload-form" name="image" value="">
+        <label for="image-upload-form" id="image-upload-form-label">
+            <p id="image-upload-form-button"><i class="bi bi-plus"></i>表紙画像をアップロード</p>
+        </label>
+
+        @error('image')
+            <p class="err">{{ $message }}</p>
+        @enderror
+    @endsection
+
+    @section('main-content')
+        <p>タイトル : <input type="text" name="title" value="{{ old('title') }}"></p>
+        @error('title')
+            <p class="err">{{ $message }}</p>
+        @enderror
+        <p>著者 : <input type="text" name="author" value="{{ old('author') }}"></p>
+        @error('author')
+            <p class="err">{{ $message }}</p>
+        @enderror
+        <p>あらすじ : <input type="text" name="synopsis" value="{{ old('synopsis') }}"></p>
+        @error('synopsis')
+            <p class="err">{{ $message }}</p>
+        @enderror
+        <p>感想 : <input type="text" name="impressions" value="{{ old('impressions') }}"></p>
+        @error('impressions')
+            <p class="err">{{ $message }}</p>
+        @enderror
+
         @csrf
-        <table>
-            <tr>
-                <th>タイトル : </th>
-                <td><input type="text" name="title" value="{{ old('title') }}"></td>
-            </tr>
-            @error('title')
-                <p class="err">{{ $message }}</p>
-            @enderror
-            <tr>
-                <th>著者 : </th>
-                <td><input type="textarea" name="author" value="{{ old('author') }}"></td>
-            </tr>
-            @error('author')
-                <p class="err">{{ $message }}</p>
-            @enderror
-            <tr>
-                <th>あらすじ : </th>
-                <td><input type="textarea" name="synopsis" value="{{ old('synopsis') }}"></td>
-            </tr>
-
-            @error('synopsis')
-                <p class="err">{{ $message }}</p>
-            @enderror
-            <tr>
-                <th>感想 : </th>
-                <td><input type="textarea" name="impressions" value="{{ old('impressions') }}"></td>
-            </tr>
-
-            @error('impressions')
-                <p class="err">{{ $message }}</p>
-            @enderror
-            <tr>
-                <th>表紙 : </th>
-                <td><input type="file" name="image" id="image-form">
-                    <label for="image-form" id="image-upload-form-label">
-                        <p><i class="bi bi-plus-lg"></i>表紙画像をアップロード</p>
-                    </label>
-                </td>
-            </tr>
-
-            @error('image')
-                <p class="err">{{ $message }}</p>
-            @enderror
-        </table>
         <button type="POST" class="btn btn-light">Send!</button>
     </form>
+@endsection
+
+@section('js-link')
+    <script src="{{ asset('/js/createnewbook.js') }}"></script>
 @endsection

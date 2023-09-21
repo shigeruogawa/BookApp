@@ -10,15 +10,15 @@
     @section('side-bar-content')
         <div id="image-upload">
             <i class="bi bi-person-bounding-box" id="image-logo"></i>
-            <img id="image-area" alt="Preview" style="display: none;">
+            <img id="image-area" alt="No image" style="display: none;">
         </div>
 
         <input type="file" id="image-upload-form" name="image_file" value="">
-        <div id="image-upload-form-link">
-            <label for="image-upload-form" id="image-upload-form-label">
-                <p><i class="bi bi-plus-lg"></i>プロフィール画像をアップロード</p>
-            </label>
-        </div>
+        {{-- <div id="image-upload-form-link"> --}}
+        <label for="image-upload-form" id="image-upload-form-label">
+            <p id="image-upload-form-button"><i class="bi bi-plus"></i>プロフィール画像をアップロード</p>
+        </label>
+        {{-- </div> --}}
 
     @endsection
     @section('main-content') <input type="hidden" name="id" value="{{ $user->id }}">

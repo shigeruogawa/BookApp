@@ -47,6 +47,7 @@ table tr td[class="book-image"] {
 
 table tr td[class="title"] {
     font-size: 25px;
+    font-family: "Gautami";
     width: 30%;
     text-align: center;
 }
