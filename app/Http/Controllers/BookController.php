@@ -3,13 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BookFormRequest;
+use App\Http\Requests\BookUpdateRequest;
 use App\Models\Book;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * 本の情報の表示、挿入、更新、削除を行うコントローラー
+ *
+ * @author ogawa.shigeru1@gmail.com
+ * @package App\Http\Controllers
+ */
 class BookController extends Controller
 {
+    /**
+     * 本の一覧画面を表示
+     *
+     * @return \Illuminate\View\View 本の一覧画面へ遷移。10件ごとにページング
+     */
     public function index()
     {
         $items = DB::table('books')->simplePaginate((10));
@@ -19,20 +30,31 @@ class BookController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 本の新規登録画面を表示
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View 本の新規登録画面へ遷移
      */
     public function toInsert()
     {
-        return view('book.createnewbook');
+
+        $synopsisText = old('synopsis');
+        if (!isset($synopsisText)) {
+            $synopsisText = 'あらすじを入力!(200文字以内)';
+        }
+
+        $impressionsText = old('impressions');
+        if (!isset($impressionsText)) {
+            $impressionsText = '感想を入力!(200文字以内)';
+        }
+
+        return view('book.createnewbook', ['synopsisText' => $synopsisText, 'impressionsText' => $impressionsText]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 本の新規登録用に送信されてきたデータを保存
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request 投稿フォームから送信されたデフォームフォーム
+     * @return \Illuminate\Http\RedirectResponse 本の一覧画面へ遷移
      */
     public function store(BookFormRequest $request)
     {
@@ -53,10 +75,10 @@ class BookController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 本の詳細画面を表示
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id 本のID
+     * @return \Illuminate\View\View 本の詳細画面へ遷移
      */
     public function show($id)
     {
@@ -67,29 +89,37 @@ class BookController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 本の編集画面を表示
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id 編集対象の本のID
+     * @return \Illuminate\View\View 本の編集画面へ遷移
      */
     public function edit($id)
     {
         $bookid = $id;
         $edititems = Book::where('id', $bookid)->first();
 
-        return view('book.editbook', ['edititems' => $edititems]);
+        $sysnopsisText = old('synopsis');
+        if (!isset($sysnopsisText)) {
+            $sysnopsisText = '【あらすじを更新!(200文字以内)】 ↓' . "\n" . "\n" . $edititems->synopsis;
+        }
+
+        $impressionsText = old('impressions');
+        if (!isset($impressionsText)) {
+            $impressionsText = '【感想を更新!(200文字以内)】 ↓' . "\n" . "\n" . $edititems->impressions;
+        }
+        return view('book.editbook', ['edititems' => $edititems, 'sysnopsisText' => $sysnopsisText, 'impressionsText' => $impressionsText]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * 本の情報を更新
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request 編集フォールから送信されたデータ
+     * @return \Illuminate\Http\RedirectResponse 本の一覧画面へ遷移
      */
-    public function update(Request $request, $id)
+    public function update(BookUpdateRequest $request)
     {
-        $target = Book::find($id);
+        $target = Book::find($request->id);
         $form = $request->all();
         unset($form['_token']);
 
@@ -99,10 +129,10 @@ class BookController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 本の情報を削除
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id 削除対象の本のID
+     * @return \Illuminate\Http\RedirectResponse 本の一覧画面へ遷移
      */
     public function destroy($id)
     {
@@ -110,20 +140,5 @@ class BookController extends Controller
         $target->delete();
 
         return redirect('/MyBook/book');
-    }
-
-    public function ses_get(Request $request)
-    {
-        $sesdata = $request->session()->get('msg');
-
-        return view('session', ['session_data' => $sesdata]);
-    }
-
-    public function ses_put(Request $request)
-    {
-        $msg = $request->input;
-        $request->session()->put('msg', $msg);
-
-        return redirect('MyBook/session');
     }
 }

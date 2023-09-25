@@ -57,7 +57,6 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'image_file' => 'mimetypes:image/jpeg,image/png'
         ]);
     }
 
@@ -73,7 +72,6 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'image_file' => $data['image_file']
         ]);
     }
 
@@ -81,12 +79,12 @@ class RegisterController extends Controller
     {
         $form = $request->all();
 
-        if (isset($form['image_file'])) {
-            $image = $request->file('image_file');
-            $imageName = time() . '.' . $image->getClientOriginalName();
-            $image->storeAs('public/image/user', $imageName);
-            $form['image_file'] = 'image/user/' . $imageName;
-        }
+        // if (isset($form['image_file'])) {
+        //     $image = $request->file('image_file');
+        //     $imageName = time() . '.' . $image->getClientOriginalName();
+        //     $image->storeAs('public/image/user', $imageName);
+        //     $form['image_file'] = 'image/user/' . $imageName;
+        // }
 
         $this->validator($request->all())->validate();
 

@@ -22,4 +22,4 @@
     <p>誕生日 : {{ $user->birth }}</p>
     <p>好きな作家は？ : {{ $user->favoauthor }}</p>
     <p>お気に入りの作品は？ : {{ $user->favowork }}</p>
-    @endsection @section('js-link') @endsection
+@endsection

@@ -2,9 +2,13 @@
     width: auto;
     float: left;
 }
+
+.btn-secondary {
+    background-color: whitesmoke;
+    color: black;
+}
 /* table関連 */
 table {
-    /* border-collapse: collapse; */
     border-spacing: 0;
     width: 90%;
 }

@@ -32,11 +32,15 @@
         @error('author')
             <p class="err">{{ $message }}</p>
         @enderror
-        <p>あらすじ : <input type="text" name="synopsis" value="{{ old('synopsis') }}"></p>
+        <p>あらすじ :
+            <textarea name="synopsis">{{ $synopsisText }}</textarea>
+        </p>
         @error('synopsis')
             <p class="err">{{ $message }}</p>
         @enderror
-        <p>感想 : <input type="text" name="impressions" value="{{ old('impressions') }}"></p>
+        <p>感想 :
+            <textarea name="impressions">{{ $impressionsText }}</textarea>
+        </p>
         @error('impressions')
             <p class="err">{{ $message }}</p>
         @enderror

@@ -1,3 +1,5 @@
- function deleteMessage() {
-    confirm("削除してよろしいでしょうか？");
-    }
+"use strict";
+
+function deleteMessage() {
+    confirm("この本を削除してよろしいでしょうか？");
+}

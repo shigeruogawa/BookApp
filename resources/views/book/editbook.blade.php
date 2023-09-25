@@ -13,15 +13,20 @@
 @section('main-content')
     <h2 id="title">{{ $edititems->title }}</h2>
 
-    <form method="post" action="/MyBook/book/{{ $edititems->id }}">
+    <form method="POST" action="/MyBook/book/update">
         @csrf
+        <input type="hidden" name="id" value="{{ $edititems->id }}">
         <p>あらすじ</p>
-        <textarea name="synopsis" id="synopsis-area">{{ $edititems->synopsis }}</textarea>
-
+        <textarea name="synopsis" id="synopsis-area">{{ $sysnopsisText }}</textarea>
+        @error('synopsis')
+            <p class="err">{{ $message }}</p>
+        @enderror
         <p>感想</p>
-        <textarea name="impressions" id="impressions-area">{{ $edititems->impressions }}</textarea>
-
-        <div><button type="submit" class="btn btn-light" style="margin-top:5px">Send!</button></div>
+        <textarea name="impressions" id="impressions-area">{{ $impressionsText }}</textarea>
+        @error('impressions')
+            <p class="err">{{ $message }}</p>
+        @enderror
+        <button type="submit" class="btn btn-light" style="margin-top:5px">Send!</button>
     </form>
 @endsection
 

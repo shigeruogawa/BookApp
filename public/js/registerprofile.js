@@ -13,6 +13,9 @@ fileUploadForm.addEventListener("change", function () {
         reader.onload = function (e) {
             imageArea.src = e.target.result;
             imageArea.style.display = "block";
+
+            imageArea.style.maxWidth = "100%";
+            imageArea.style.maxHeight = "100%";
         };
 
         reader.readAsDataURL(fileUploadForm.files[0]);

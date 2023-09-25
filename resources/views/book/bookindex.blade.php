@@ -8,21 +8,22 @@
 
 @section('side-bar-content')
     <div>
-        <p>{{ $user->name . 'さんこんにちは' }}</p>
-        <form action="/logout" method="POST">
-            @csrf
-            <button>ログアウト</button>
-        </form>
+        <H2>{{ $user->name . 'さんこんにちは' }}</H2>
     </div>
     <div id="sideboard">
         <div id="person">
             <img id="portrait">
         </div>
         <ul>
-            <li>好きな作家: </li>
-            <li>お気に入りの作品: </li>
+            <li>好きな作家: {{ $user->favoauthor }}</li>
+            <li>お気に入りの作品: {{ $user->favowork }}</li>
         </ul>
-        <p id="self-intro"></p>
+        <form action="/logout" method="POST">
+            @csrf
+            <button class="btn btn-secondary">
+                <i class="bi bi-door-open"></i> ログアウト
+            </button>
+        </form>
     </div>
 @endsection
 
